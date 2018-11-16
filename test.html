@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .content{
+           width: 100px;
+           height: 100px;
+       }
+       .red{
+           border: 10px solid red;
+       }
+       .blue{
+           border: 10px solid blue;
+       }
+       .green{
+           border: 10px solid green;
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div :class='show' :style="[styles,color]">111</div>
+        <button @click="show='red'">red</button>
+        <button @click="show='blue'">blue</button>
+        <button @click="show='green'">green</button>
+
+        <div class="content red" v-if="num % 2 == 0">1</div>
+        <div class="content green" v-else-if="num == 3">2</div>
+        <div class="content blue" v-else>3</div>
+        
+        <div class="content red" v-if="flag">v-if</div>
+        <div class="content red" v-show="flag">v-show 只改变一个css属性,display:none</div>
+        <br>
+        <div>
+           <ul>
+               <li v-for="(item,key) in listArr" v-if="item % 2 == 0">{{key}}:{{item}}</li>
+           </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+          show:'content',
+          styles:{
+             color:'red',
+             fontSize:'18px'
+          },
+          size:'size-18',
+          color:'red',
+          num:0,
+          flag:false,
+          listArr:[1,2,3,4,5,6],
+          listObj:{
+              name:'dd',
+              sex:'male',
+              age:18
+          }
+        },
+    })
+    </script>
+</body>
+</html>
